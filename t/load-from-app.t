@@ -4,8 +4,8 @@ use Mojolicious;
 use Test::More;
 
 my $jv = JSON::Validator->new;
-$jv->ua->server->app(Mojolicious->new);
-$jv->ua->server->app->routes->get(
+$jv->store->ua->server->app(Mojolicious->new);
+$jv->store->ua->server->app->routes->get(
   '/spec' => sub {
     shift->render(json => {'$ref' => 'http://swagger.io/v2/schema.json'});
   }
